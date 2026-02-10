@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/pratikum_dua_kelompok_tiga.iml" filepath="$PROJECT_DIR$/pratikum_dua_kelompok_tiga.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/pratikum_dua_kelompok_tiga_android.iml" filepath="$PROJECT_DIR$/android/pratikum_dua_kelompok_tiga_android.iml" />
+    </modules>
+  </component>
+</project>
