@@ -3,16 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-
-void main() {
-  runApp(
-    const MaterialApp(title: 'Mobile Scanner Example', home: _ExampleHome()),
-  );
-}
-
-/// Implementation of Mobile Scanner example with simple configuration
 class MobileScannerSimple extends StatefulWidget {
-  /// Constructor for simple Mobile Scanner example
   const MobileScannerSimple({super.key});
 
   @override
