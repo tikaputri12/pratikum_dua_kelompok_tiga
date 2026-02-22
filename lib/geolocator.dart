@@ -10,10 +10,6 @@ final MaterialColor themeMaterialColor =
     BaseflowPluginExample.createMaterialColor(
         const Color.fromRGBO(48, 49, 60, 1));
 
-void main() {
-  runApp(const GeolocatorWidget());
-}
-
 /// Example [Widget] showing the functionalities of the geolocator plugin
 class GeolocatorWidget extends StatefulWidget {
   /// Creates a new GeolocatorWidget.
