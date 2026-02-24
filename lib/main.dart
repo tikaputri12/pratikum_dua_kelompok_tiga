@@ -39,7 +39,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // Data menu: icon, label, warna, halaman
   final List<Map<String, dynamic>> _menus = [
     {
       'title': 'Camera',
@@ -103,7 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
               child: Row(
                 children: [
-                  // Icon dalam lingkaran berwarna
                   Container(
                     width: 52,
                     height: 52,
@@ -118,7 +116,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  // Label
                   Expanded(
                     child: Text(
                       menu['title'] as String,
@@ -129,7 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // Arrow
                   Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 16,
@@ -159,7 +155,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
                 child: Column(
@@ -196,7 +191,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const SizedBox(height: 28),
-              // Card putih berisi daftar menu
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
