@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
       title: 'Praktikum Plugin Flutter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: 
+        const Color.from(alpha: 1, red: 0.816, green: 0.851, blue: 0.969)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Menu Praktikum Flutter'),
@@ -146,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 61, 115, 214), Color.fromARGB(255, 113, 121, 192)],
+            colors: [Color.fromARGB(255, 243, 121, 237), Color.fromARGB(255, 190, 61, 230)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
