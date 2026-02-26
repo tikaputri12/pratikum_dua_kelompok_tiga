@@ -14,14 +14,13 @@ import 'package:flutter/services.dart';
 class ConnectivityPage extends StatelessWidget {
   const ConnectivityPage({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: const Color(0x9f4376f8),
+        colorSchemeSeed: const Color(0xFFE0E0E0), // ← diubah ke abu-abu terang
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -57,10 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initConnectivity() async {
     late List<ConnectivityResult> result;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (e) {
@@ -68,9 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
       return;
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) {
       return Future.value(null);
     }
@@ -82,7 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _connectionStatus = result;
     });
-    // ignore: avoid_print
     print('Connectivity changed: $_connectionStatus');
   }
 
@@ -105,13 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ListView(
             shrinkWrap: true,
             children: List.generate(
-                _connectionStatus.length,
-                (index) => Center(
-                      child: Text(
-                        _connectionStatus[index].toString(),
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    )),
+              _connectionStatus.length,
+              (index) => Center(
+                child: Text(
+                  _connectionStatus[index].toString(),
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+            ),
           ),
           const Spacer(flex: 2),
         ],
