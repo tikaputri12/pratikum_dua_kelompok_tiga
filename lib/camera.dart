@@ -1,6 +1,3 @@
-// Copyright 2013 The Flutter Authors
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
 import 'dart:async';
 import 'dart:io';
@@ -11,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:video_player/video_player.dart';
 
-// ─── Design Tokens ──────────────────────────────────────────────────────────
 const _bgDark = Color(0xFF0A0A0F);
 const _bgCard = Color(0xFF13131A);
 const _bgSurface = Color(0xFF1C1C26);
@@ -22,9 +18,9 @@ const _textPrimary = Color(0xFFF0F0F5);
 const _textSecondary = Color(0xFF8888AA);
 const _borderColor = Color(0xFF2A2A3A);
 
-/// Camera example home widget.
+
 class CameraExampleHome extends StatefulWidget {
-  /// Default Constructor
+
   const CameraExampleHome({super.key});
 
   @override
