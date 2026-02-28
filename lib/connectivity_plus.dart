@@ -1,7 +1,4 @@
 // Copyright 2017 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 // ignore_for_file: public_member_api_docs
 
 import 'dart:async';
@@ -17,12 +14,13 @@ class ConnectivityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Connectivity App',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: const Color(0xFFE0E0E0), // ← diubah ke abu-abu terang
+        colorSchemeSeed: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Network Connectivity'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -79,36 +77,100 @@ class _MyHomePageState extends State<MyHomePage> {
     print('Connectivity changed: $_connectionStatus');
   }
 
+  IconData getIcon(ConnectivityResult result) {
+    switch (result) {
+      case ConnectivityResult.wifi:
+        return Icons.wifi;
+      case ConnectivityResult.mobile:
+        return Icons.network_cell;
+      case ConnectivityResult.ethernet:
+        return Icons.settings_ethernet;
+      case ConnectivityResult.bluetooth:
+        return Icons.bluetooth;
+      case ConnectivityResult.none:
+        return Icons.signal_wifi_off;
+      default:
+        return Icons.device_unknown;
+    }
+  }
+
+  Color getColor(ConnectivityResult result) {
+    switch (result) {
+      case ConnectivityResult.wifi:
+        return Colors.green;
+      case ConnectivityResult.mobile:
+        return Colors.orange;
+      case ConnectivityResult.none:
+        return Colors.red;
+      default:
+        return Colors.blue;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Connectivity Plus Example'),
+        title: Text(widget.title),
+        centerTitle: true,
         elevation: 4,
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Spacer(flex: 2),
-          Text(
-            'Active connection types:',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          const Spacer(),
-          ListView(
-            shrinkWrap: true,
-            children: List.generate(
-              _connectionStatus.length,
-              (index) => Center(
-                child: Text(
-                  _connectionStatus[index].toString(),
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+
+            const SizedBox(height: 30),
+
+            Icon(
+              Icons.network_check,
+              size: 80,
+              color: Colors.blue,
+            ),
+
+            const SizedBox(height: 20),
+
+            Text(
+              "Network Status",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+
+            const SizedBox(height: 30),
+
+            Expanded(
+              child: ListView.builder(
+                itemCount: _connectionStatus.length,
+                itemBuilder: (context, index) {
+                  final result = _connectionStatus[index];
+
+                  return Card(
+                    elevation: 5,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ListTile(
+                      leading: Icon(
+                        getIcon(result),
+                        color: getColor(result),
+                        size: 35,
+                      ),
+                      title: Text(
+                        result.toString().replaceAll('ConnectivityResult.', ''),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: const Text("Active network connection"),
+                    ),
+                  );
+                },
               ),
             ),
-          ),
-          const Spacer(flex: 2),
-        ],
+          ],
+        ),
       ),
     );
   }
